@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MaterialRangeSlider">
+        <attr name="min" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="unpressedTargetRadius" format="dimension" />
+        <attr name="pressedTargetRadius" format="dimension" />
+        <attr name="targetColor" format="color" />
+        <attr name="insideRangeLineColor" format="color" />
+        <attr name="outsideRangeLineColor" format="color" />
+        <attr name="insideRangeLineStrokeWidth" format="dimension" />
+        <attr name="outsideRangeLineStrokeWidth" format="dimension" />
+    </declare-styleable>
+</resources>

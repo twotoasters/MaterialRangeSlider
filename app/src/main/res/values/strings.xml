@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MaterialRangeSlider</string>
+
+    <string name="pick_range">Pick Range</string>
+    <string translatable="false" name="price_picker_dash">" - "</string>
+    <string name="price_dialog_title">Price</string>
+</resources>
