@@ -22,5 +22,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.twotoasters.servos:util:1.0.0'
     compile 'com.jakewharton:butterknife:6.1.+'
-    compile 'com.twotoasters.servos:util-otto:1.0.0'
+    compile 'com.android.support:design:22.2.0'
 }

@@ -6,6 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnShowListener;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AlertDialog.Builder;
@@ -15,7 +16,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ticketmaster.mobilestudio.materialrangeslider.MaterialRangeSlider.RangeSliderListener;
-import com.twotoasters.servos.util.otto.BusProvider;
 
 import java.util.Currency;
 import java.util.Locale;
@@ -67,8 +67,10 @@ public class PriceRangePickerDialogFragment extends DialogFragment implements Ra
                 .setPositiveButton("Ok", new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        BusProvider.post(new PriceRangeSelectedEvent(
-                                priceSlider.getSelectedMin(), priceSlider.getSelectedMax()));
+                        Snackbar.make(getActivity().findViewById(R.id.root),
+                                "Price range of " + minPriceTxt.getText().toString()
+                                        + " - " + maxPriceTxt.getText().toString() + " selected.", Snackbar.LENGTH_LONG)
+                                .show();
                     }
                 })
                 .setNeutralButton("Reset", new OnClickListener() {
