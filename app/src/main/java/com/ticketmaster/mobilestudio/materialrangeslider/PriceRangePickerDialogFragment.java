@@ -83,7 +83,7 @@ public class PriceRangePickerDialogFragment extends DialogFragment implements Ra
             @Override
             public void onShow(DialogInterface dialog) {
                 dial.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.tms_blue));
-                dial.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.tms_blue));
+                dial.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(getResources().getColor(R.color.tms_blue));
             }
         });
         TextView title = new TextView(getActivity());
@@ -125,7 +125,7 @@ public class PriceRangePickerDialogFragment extends DialogFragment implements Ra
 //         Override onClickListener so dialog is not closed when user clicks reset
         AlertDialog d = (AlertDialog) getDialog();
         if (d != null) {
-            Button negativeButton = d.getButton(Dialog.BUTTON_NEGATIVE);
+            Button negativeButton = d.getButton(Dialog.BUTTON_NEUTRAL);
             negativeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
