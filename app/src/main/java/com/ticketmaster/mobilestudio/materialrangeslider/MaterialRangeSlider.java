@@ -95,23 +95,23 @@ public class MaterialRangeSlider extends View {
 
         if (attrs != null) {
             //get attributes passed in XML
-            TypedArray a = getContext().obtainStyledAttributes(attrs,
+            TypedArray styledAttrs = getContext().obtainStyledAttributes(attrs,
                     R.styleable.MaterialRangeSlider, 0, 0);
-            targetColor = a.getColor(R.styleable.MaterialRangeSlider_insideRangeLineColor,
+            targetColor = styledAttrs.getColor(R.styleable.MaterialRangeSlider_insideRangeLineColor,
                     colorControlNormal);
-            insideRangeColor = a.getColor(R.styleable.MaterialRangeSlider_insideRangeLineColor,
+            insideRangeColor = styledAttrs.getColor(R.styleable.MaterialRangeSlider_insideRangeLineColor,
                     colorControlNormal);
-            outsideRangeColor = a.getColor(R.styleable.MaterialRangeSlider_outsideRangeLineColor,
+            outsideRangeColor = styledAttrs.getColor(R.styleable.MaterialRangeSlider_outsideRangeLineColor,
                     colorControlHighlight);
-            min = a.getInt(R.styleable.MaterialRangeSlider_min, min);
-            max = a.getInt(R.styleable.MaterialRangeSlider_max, max);
+            min = styledAttrs.getInt(R.styleable.MaterialRangeSlider_min, min);
+            max = styledAttrs.getInt(R.styleable.MaterialRangeSlider_max, max);
 
-            unpressedRadius = a.getDimension(R.styleable.MaterialRangeSlider_unpressedTargetRadius, DEFAULT_UNPRESSED_RADIUS);
-            pressedRadius = a.getDimension(R.styleable.MaterialRangeSlider_pressedTargetRadius, DEFAULT_PRESSED_RADIUS);
-            insideRangeLineStrokeWidth = a.getDimension(R.styleable.MaterialRangeSlider_insideRangeLineStrokeWidth, DEFAULT_INSIDE_RANGE_STROKE_WIDTH);
-            outsideRangeLineStrokeWidth = a.getDimension(R.styleable.MaterialRangeSlider_outsideRangeLineStrokeWidth, DEFAULT_OUTSIDE_RANGE_STROKE_WIDTH);
+            unpressedRadius = styledAttrs.getDimension(R.styleable.MaterialRangeSlider_unpressedTargetRadius, DEFAULT_UNPRESSED_RADIUS);
+            pressedRadius = styledAttrs.getDimension(R.styleable.MaterialRangeSlider_pressedTargetRadius, DEFAULT_PRESSED_RADIUS);
+            insideRangeLineStrokeWidth = styledAttrs.getDimension(R.styleable.MaterialRangeSlider_insideRangeLineStrokeWidth, DEFAULT_INSIDE_RANGE_STROKE_WIDTH);
+            outsideRangeLineStrokeWidth = styledAttrs.getDimension(R.styleable.MaterialRangeSlider_outsideRangeLineStrokeWidth, DEFAULT_OUTSIDE_RANGE_STROKE_WIDTH);
 
-            a.recycle();
+            styledAttrs.recycle();
         }
 
         minTargetRadius = unpressedRadius;
@@ -131,28 +131,23 @@ public class MaterialRangeSlider extends View {
     private void getDefaultColors() {
         TypedValue typedValue = new TypedValue();
 
-        TypedArray a = getContext().obtainStyledAttributes(typedValue.data, new int[]{
-                android.R.attr.colorPrimary,
-                android.R.attr.colorAccent,
+        TypedArray materialStyledAttrs = getContext().obtainStyledAttributes(typedValue.data, new int[]{
                 android.R.attr.colorControlNormal,
-                android.R.attr.colorControlActivated,
                 android.R.attr.colorControlHighlight
         });
 
-        TypedArray b = getContext().obtainStyledAttributes(typedValue.data, new int[]{
-                android.support.v7.appcompat.R.attr.colorPrimary,
-                android.support.v7.appcompat.R.attr.colorAccent,
+        TypedArray appcompatMaterialStyledAttrs = getContext().obtainStyledAttributes(typedValue.data, new int[]{
                 android.support.v7.appcompat.R.attr.colorControlNormal,
-                android.support.v7.appcompat.R.attr.colorControlActivated,
                 android.support.v7.appcompat.R.attr.colorControlHighlight
         });
-        colorControlNormal = a.getColor(2, b.getColor(2, android.R.color.holo_blue_dark));
-        colorControlHighlight = a.getColor(4, b.getColor(4, android.R.color.black));
+        colorControlNormal = materialStyledAttrs.getColor(0, appcompatMaterialStyledAttrs.getColor(0, android.R.color.holo_blue_dark));
+        colorControlHighlight = materialStyledAttrs.getColor(1, appcompatMaterialStyledAttrs.getColor(1, android.R.color.black));
 
         targetColor = colorControlNormal;
         insideRangeColor = colorControlHighlight;
 
-        a.recycle();
+        materialStyledAttrs.recycle();
+        appcompatMaterialStyledAttrs.recycle();
     }
 
     /**

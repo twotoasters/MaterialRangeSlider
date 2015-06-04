@@ -23,7 +23,7 @@ import java.util.Locale;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class PricePickerDialogFragment extends DialogFragment implements RangeSliderListener {
+public class PriceRangePickerDialogFragment extends DialogFragment implements RangeSliderListener {
 
     public static final String MIN_PRICE_KEY = "min_price_key";
     public static final String MAX_PRICE_KEY = "max_price_key";
@@ -39,12 +39,12 @@ public class PricePickerDialogFragment extends DialogFragment implements RangeSl
     @InjectView(R.id.max_price_txt) TextView maxPriceTxt;
     @InjectView(R.id.price_slider) MaterialRangeSlider priceSlider;
 
-    public static PricePickerDialogFragment newInstance(int minPrice,
+    public static PriceRangePickerDialogFragment newInstance(int minPrice,
                                                         int maxPrice,
                                                         Integer selectedMinPrice,
                                                         Integer selectedMaxPrice,
                                                         @NonNull String currencySymbol) {
-        PricePickerDialogFragment fragment = new PricePickerDialogFragment();
+        PriceRangePickerDialogFragment fragment = new PriceRangePickerDialogFragment();
         fragment.setCancelable(false);
         Bundle bundle = new Bundle();
         bundle.putInt(MIN_PRICE_KEY, minPrice);
@@ -71,7 +71,7 @@ public class PricePickerDialogFragment extends DialogFragment implements RangeSl
                                 priceSlider.getSelectedMin(), priceSlider.getSelectedMax()));
                     }
                 })
-                .setNegativeButton("Reset", new OnClickListener() {
+                .setNeutralButton("Reset", new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Do nothing - OnClickListener will be overridden in onStart()
@@ -110,21 +110,19 @@ public class PricePickerDialogFragment extends DialogFragment implements RangeSl
 
     @Override
     public void onMinChanged(int newValue) {
-        minPriceTxt.setText(currencyCode
-                + String.valueOf(newValue));
+        minPriceTxt.setText(currencyCode + String.valueOf(newValue));
     }
 
     @Override
     public void onMaxChanged(int newValue) {
-        maxPriceTxt.setText(currencyCode
-                + String.valueOf(newValue));
+        maxPriceTxt.setText(currencyCode + String.valueOf(newValue));
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        // Override onClickListener so dialog is not closed when user clicks reset
+//         Override onClickListener so dialog is not closed when user clicks reset
         AlertDialog d = (AlertDialog) getDialog();
         if (d != null) {
             Button negativeButton = d.getButton(Dialog.BUTTON_NEGATIVE);

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_launch_picker)
     public void onLaunchSlider() {
-        PricePickerDialogFragment.newInstance(0, 100, 0, 100, Currency.getInstance(Locale.getDefault()).getSymbol())
+        PriceRangePickerDialogFragment.newInstance(0, 100, 0, 100, Currency.getInstance(Locale.getDefault()).getSymbol())
                 .show(getSupportFragmentManager(), "slider");
     }
 
