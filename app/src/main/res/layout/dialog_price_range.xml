@@ -40,5 +40,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="96dp"
-        app:outsideRangeLineStrokeWidth="2dp"/>
+        app:outsideRangeLineStrokeWidth="2dp"
+        app:insideRangeLineStrokeWidth="4dp"
+        app:pressedTargetRadius="12dp"
+        app:unpressedTargetRadius="4dp"
+        app:outsideRangeLineColor="@color/tms_gray"
+        app:insideRangeLineColor="@color/tms_blue"
+        app:targetColor="@color/tms_blue" />
 </LinearLayout>
