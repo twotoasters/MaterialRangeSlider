@@ -1,4 +1,4 @@
-package com.ticketmaster.android.sample.materialrangeslider;
+package com.ticketmaster.mobilestudio.materialrangeslider;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

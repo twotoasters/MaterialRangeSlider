@@ -1,4 +1,4 @@
-package com.ticketmaster.android.sample.materialrangeslider;
+package com.ticketmaster.mobilestudio.materialrangeslider;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -34,7 +34,7 @@ public class MaterialRangeSlider extends View {
 
     //Padding that is always added to both sides of slider, in addition to layout_margin
     private static final int HORIZONTAL_PADDING = 80;
-    private static final int DEFAULT_TOUCH_TARGET_SIZE = 80;
+    private static final int DEFAULT_TOUCH_TARGET_SIZE = Math.round(DensityUtils.dpToPx(40));
     private static final int DEFAULT_UNPRESSED_RADIUS = 15;
     private static final int DEFAULT_PRESSED_RADIUS = 40;
     private static final int DEFAULT_INSIDE_RANGE_STROKE_WIDTH = 8;
@@ -376,7 +376,9 @@ public class MaterialRangeSlider extends View {
         return true;
     }
 
-    //Checks if given index is touching the min target.  If touching start animation.
+    /**
+     * Checks if given index is touching the min target.  If touching start animation.
+     */
     private boolean checkTouchingMinTarget(int index, MotionEvent event) {
         if (isTouchingMinTarget(index, event)) {
             lastTouchedMin = true;
@@ -390,7 +392,9 @@ public class MaterialRangeSlider extends View {
         return false;
     }
 
-    //Checks if given index is touching the max target.  If touching starts animation.
+    /**
+     * Checks if given index is touching the max target.  If touching starts animation.
+     */
     private boolean checkTouchingMaxTarget(int index, MotionEvent event) {
         if (isTouchingMaxTarget(index, event)) {
             lastTouchedMin = false;
@@ -504,7 +508,11 @@ public class MaterialRangeSlider extends View {
         this.maxTargetRadius = maxTargetRadius;
     }
 
-    public <T extends Number> T clamp(@NonNull T value, @NonNull T min, @NonNull T max) {
+    /**
+     * Keeps Number value inside min/max bounds by returning min or max if outside of
+     * bounds.  Otherwise will return the value without altering.
+     */
+    private <T extends Number> T clamp(@NonNull T value, @NonNull T min, @NonNull T max) {
         if (value.doubleValue() > max.doubleValue()) {
                 return max;
             } else if (value.doubleValue() < min.doubleValue()) {

@@ -1,4 +1,4 @@
-package com.ticketmaster.android.sample.materialrangeslider;
+package com.ticketmaster.mobilestudio.materialrangeslider;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.ticketmaster.android.sample.materialrangeslider.MaterialRangeSlider.RangeSliderListener;
+import com.ticketmaster.mobilestudio.materialrangeslider.MaterialRangeSlider.RangeSliderListener;
 import com.twotoasters.servos.util.otto.BusProvider;
 
 import java.util.Currency;

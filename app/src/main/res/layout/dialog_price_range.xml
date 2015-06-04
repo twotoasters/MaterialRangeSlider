@@ -35,7 +35,7 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <com.ticketmaster.android.sample.materialrangeslider.MaterialRangeSlider
+    <com.ticketmaster.mobilestudio.materialrangeslider.MaterialRangeSlider
         android:id="@+id/price_slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
