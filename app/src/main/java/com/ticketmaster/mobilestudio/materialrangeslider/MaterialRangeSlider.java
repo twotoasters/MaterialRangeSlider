@@ -53,8 +53,8 @@ public class MaterialRangeSlider extends View {
     private int maxPosition = 0;
     private int midY = 0;
     //List of event IDs touching targets
-    Set<Integer> isTouchingMinTarget = new HashSet<>();
-    Set<Integer> isTouchingMaxTarget = new HashSet<>();
+    private Set<Integer> isTouchingMinTarget = new HashSet<>();
+    private Set<Integer> isTouchingMaxTarget = new HashSet<>();
     private int min = 0;
     private int max = DEFAULT_MAX;
     private int range;
@@ -74,22 +74,22 @@ public class MaterialRangeSlider extends View {
     private Integer startingMin;
     private Integer startingMax;
 
-    public MaterialRangeSlider(Context context) throws Exception {
+    public MaterialRangeSlider(Context context) {
         super(context);
         init(null);
     }
 
-    public MaterialRangeSlider(Context context, AttributeSet attrs) throws Exception {
+    public MaterialRangeSlider(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public MaterialRangeSlider(Context context, AttributeSet attrs, int defStyleAttr) throws Exception {
+    public MaterialRangeSlider(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
-    public void init(AttributeSet attrs) throws Exception {
+    public void init(AttributeSet attrs) {
         getDefaultColors();
         getDefaultMeasurements();
 
