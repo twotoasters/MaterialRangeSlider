@@ -198,7 +198,6 @@ public class MaterialRangeSlider extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 anim.removeAllListeners();
-                super.onAnimationEnd(animation);
             }
         });
         anim.setInterpolator(new AccelerateInterpolator());
