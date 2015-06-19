@@ -1,0 +1,24 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textViewStyle">@style/RobotoTextStyle</item>
+        <item name="colorPrimary">@color/tms_blue</item>
+        <item name="colorPrimaryDark">@color/tms_dark_blue</item>
+        <item name="colorAccent">@color/tms_gray</item>
+        <item name="colorControlNormal">@color/tms_blue</item>
+        <item name="colorControlHighlight">@color/tms_gray</item>
+        <item name="android:alertDialogStyle">@style/ThemedDialog</item>
+    </style>
+
+    <style name="RobotoTextStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TitleText" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-bold</item>
+    </style>
+
+    <style name="ThemedDialog" parent="AlertDialog.AppCompat">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+</resources>
