@@ -2,7 +2,7 @@
 
 ![](http://i.imgur.com/2hou4LT.gif)
 
-Material design slider for selecting a range of values.  This is a sample app for this [blog post](http://www.toastdroid.com) explaining the implementation.
+Material design slider for selecting a range of values.  This is a sample app for this [blog post](http://toastdroid.com/2015/06/19/material-range-slider/) explaining the implementation.
 
 MaterialRangeSlider is not in a library.  If you would like to reuse MaterialRangeSlider in your app you will need to copy the MaterialRangeSlider.java file into your project.  You will also need the declaration of the custom attributes in your attrs.xml.  
 
