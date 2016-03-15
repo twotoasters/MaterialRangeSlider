@@ -3,6 +3,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textViewStyle">@style/RobotoTextStyle</item>
         <item name="colorPrimary">@color/tms_blue</item>
+        <item name="colorPrimaryDark">@color/tms_dark_blue</item>
         <item name="colorAccent">@color/tms_gray</item>
         <item name="colorControlNormal">@color/tms_blue</item>
         <item name="colorControlHighlight">@color/tms_gray</item>

@@ -1,4 +1,4 @@
-package com.ticketmaster.android.sample.materialrangeslider;
+package com.ticketmaster.mobilestudio.materialrangeslider;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -6,6 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnShowListener;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AlertDialog.Builder;
@@ -14,8 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.ticketmaster.android.sample.materialrangeslider.MaterialRangeSlider.RangeSliderListener;
-import com.twotoasters.servos.util.otto.BusProvider;
+import com.ticketmaster.mobilestudio.materialrangeslider.MaterialRangeSlider.RangeSliderListener;
 
 import java.util.Currency;
 import java.util.Locale;
@@ -23,7 +23,7 @@ import java.util.Locale;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class PricePickerDialogFragment extends DialogFragment implements RangeSliderListener {
+public class PriceRangePickerDialogFragment extends DialogFragment implements RangeSliderListener {
 
     public static final String MIN_PRICE_KEY = "min_price_key";
     public static final String MAX_PRICE_KEY = "max_price_key";
@@ -39,12 +39,12 @@ public class PricePickerDialogFragment extends DialogFragment implements RangeSl
     @InjectView(R.id.max_price_txt) TextView maxPriceTxt;
     @InjectView(R.id.price_slider) MaterialRangeSlider priceSlider;
 
-    public static PricePickerDialogFragment newInstance(int minPrice,
+    public static PriceRangePickerDialogFragment newInstance(int minPrice,
                                                         int maxPrice,
                                                         Integer selectedMinPrice,
                                                         Integer selectedMaxPrice,
                                                         @NonNull String currencySymbol) {
-        PricePickerDialogFragment fragment = new PricePickerDialogFragment();
+        PriceRangePickerDialogFragment fragment = new PriceRangePickerDialogFragment();
         fragment.setCancelable(false);
         Bundle bundle = new Bundle();
         bundle.putInt(MIN_PRICE_KEY, minPrice);
@@ -67,11 +67,13 @@ public class PricePickerDialogFragment extends DialogFragment implements RangeSl
                 .setPositiveButton("Ok", new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        BusProvider.post(new PriceRangeSelectedEvent(
-                                priceSlider.getSelectedMin(), priceSlider.getSelectedMax()));
+                        Snackbar.make(getActivity().findViewById(R.id.root),
+                                "Price range of " + minPriceTxt.getText().toString()
+                                        + " - " + maxPriceTxt.getText().toString() + " selected.", Snackbar.LENGTH_LONG)
+                                .show();
                     }
                 })
-                .setNegativeButton("Reset", new OnClickListener() {
+                .setNeutralButton("Reset", new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Do nothing - OnClickListener will be overridden in onStart()
@@ -83,7 +85,7 @@ public class PricePickerDialogFragment extends DialogFragment implements RangeSl
             @Override
             public void onShow(DialogInterface dialog) {
                 dial.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.tms_blue));
-                dial.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.tms_blue));
+                dial.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(getResources().getColor(R.color.tms_blue));
             }
         });
         TextView title = new TextView(getActivity());
@@ -110,24 +112,22 @@ public class PricePickerDialogFragment extends DialogFragment implements RangeSl
 
     @Override
     public void onMinChanged(int newValue) {
-        minPriceTxt.setText(currencyCode
-                + String.valueOf(newValue));
+        minPriceTxt.setText(currencyCode + String.valueOf(newValue));
     }
 
     @Override
     public void onMaxChanged(int newValue) {
-        maxPriceTxt.setText(currencyCode
-                + String.valueOf(newValue));
+        maxPriceTxt.setText(currencyCode + String.valueOf(newValue));
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        // Override onClickListener so dialog is not closed when user clicks reset
+//         Override onClickListener so dialog is not closed when user clicks reset
         AlertDialog d = (AlertDialog) getDialog();
         if (d != null) {
-            Button negativeButton = d.getButton(Dialog.BUTTON_NEGATIVE);
+            Button negativeButton = d.getButton(Dialog.BUTTON_NEUTRAL);
             negativeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
