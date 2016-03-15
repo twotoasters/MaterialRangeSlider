@@ -20,8 +20,8 @@ import com.ticketmaster.mobilestudio.materialrangeslider.MaterialRangeSlider.Ran
 import java.util.Currency;
 import java.util.Locale;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class PriceRangePickerDialogFragment extends DialogFragment implements RangeSliderListener {
 
@@ -35,9 +35,9 @@ public class PriceRangePickerDialogFragment extends DialogFragment implements Ra
 
     private String currencyCode;
 
-    @InjectView(R.id.min_price_txt) TextView minPriceTxt;
-    @InjectView(R.id.max_price_txt) TextView maxPriceTxt;
-    @InjectView(R.id.price_slider) MaterialRangeSlider priceSlider;
+    @Bind(R.id.min_price_txt) TextView minPriceTxt;
+    @Bind(R.id.max_price_txt) TextView maxPriceTxt;
+    @Bind(R.id.price_slider) MaterialRangeSlider priceSlider;
 
     public static PriceRangePickerDialogFragment newInstance(int minPrice,
                                                         int maxPrice,
@@ -95,7 +95,7 @@ public class PriceRangePickerDialogFragment extends DialogFragment implements Ra
         title.setTextAppearance(getActivity(), R.style.TitleText);
         dial.setCustomTitle(title);
         View slider = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_price_range, null);
-        ButterKnife.inject(this, slider);
+        ButterKnife.bind(this, slider);
         priceSlider.setRangeSliderListener(this);
         priceSlider.setMin(getArguments().getInt(MIN_PRICE_KEY));
         priceSlider.setMax(getArguments().getInt(MAX_PRICE_KEY));
